@@ -1,4 +1,4 @@
-export default function(state, action) {
+export default function flatsReducer(state, action) {
   if (state === undefined) {
     return [];
   }
