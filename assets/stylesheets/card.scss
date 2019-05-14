@@ -1,0 +1,13 @@
+.card {
+  flex: 50% 0 0;
+  cursor: pointer;
+  border: 6px solid transparent;
+}
+
+.card .card-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
