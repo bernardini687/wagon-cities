@@ -2,7 +2,7 @@ import React from 'react';
 
 const FlatList = () => {
   return (
-    <div>
+    <div className="flat-list col-sm-7">
       DO FLAT LIST
     </div>
   );

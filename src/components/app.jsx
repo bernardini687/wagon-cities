@@ -5,7 +5,7 @@ import Map from '../containers/map';
 
 const App = () => {
   return (
-    <div>
+    <div className="row">
       <FlatList />
       <Map />
     </div>
