@@ -1,0 +1,16 @@
+.card {
+  background-position: center;
+  background-size: cover !important;
+  border: 6px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  flex: 50% 0 0;
+}
+
+.card .card-infos {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  position: relative;
+}
