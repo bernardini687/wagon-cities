@@ -1,18 +1,35 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import setFlats from '../actions'; // index.js is implicit
 
 import Flat from '../components/flat';
 
-export default class FlatList extends React.Component {
+class FlatList extends React.Component {
   componentWillMount() {
-    // dispatch action to load flats
+    this.props.setFlats();
   }
 
   render() {
-    const { testFlats } = this.props;
+    const { flats } = this.props;
     return (
       <div className="flat-list col-sm-7">
-        {testFlats.flats.map(flat => <Flat key={flat.name} flat={flat} />)}
+        {flats.map(flat => <Flat key={flat.name} flat={flat} />)}
       </div>
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setFlats },
+    dispatch
+  );
+}
+
+function mapReduxStateToProps(reduxState) {
+  return { flats: reduxState.flats };
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(FlatList);

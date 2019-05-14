@@ -1,5 +1,4 @@
 export default function(state, action) {
-  // compute
   if (state === undefined) {
     return [];
   }
