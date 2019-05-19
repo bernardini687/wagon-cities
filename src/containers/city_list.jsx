@@ -1,8 +1,12 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { setCities } from '../actions';
 
 import City from './city';
 
-export default class CityList extends React.Component {
+class CityList extends React.Component {
   componentWillMount() {
     this.props.setCities();
   }
@@ -22,3 +26,13 @@ export default class CityList extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { cities: state.cities };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setCities }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CityList);
