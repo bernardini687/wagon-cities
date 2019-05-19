@@ -22,10 +22,7 @@ class FlatList extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { setFlats },
-    dispatch
-  );
+  return bindActionCreators({ setFlats }, dispatch);
 }
 
 function mapReduxStateToProps(reduxState) {

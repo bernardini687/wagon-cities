@@ -1,6 +1,10 @@
 /* eslint prefer-template: off */
 
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { selectFlat } from '../actions';
 
 class Flat extends React.Component {
   handleClick = () => {
@@ -29,6 +33,14 @@ class Flat extends React.Component {
         </div>
       </div>
     );
+  }
+
+  mapDispatchToProps(dispatch) {
+    return bindActionCreators({ selectFlat }, dispatch);
+  }
+
+  mapReduxStateToProps() {
+
   }
 }
 
