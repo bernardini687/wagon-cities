@@ -8,7 +8,7 @@ import { selectFlat } from '../actions';
 
 class Flat extends React.Component {
   handleClick = () => {
-    // call selectFlat action
+    this.props.selectFlat(this.props.flat);
   }
 
   render() {
@@ -35,13 +35,9 @@ class Flat extends React.Component {
     );
   }
 
-  mapDispatchToProps(dispatch) {
+  function mapDispatchToProps(dispatch) {
     return bindActionCreators({ selectFlat }, dispatch);
-  }
-
-  mapReduxStateToProps() {
-
   }
 }
 
-export default Flat;
+export default connect(null, mapDispatchToProps)(Flat);
