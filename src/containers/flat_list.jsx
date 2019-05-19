@@ -15,7 +15,7 @@ class FlatList extends React.Component {
     const { flats } = this.props;
     return (
       <div className="flat-list col-sm-7">
-        {flats.map(flat => <Flat key={flat.name} flat={flat} />)}
+        {flats.map((flat, index) => <Flat key={flat.name} flat={flat} tabIndex={index} />)}
       </div>
     );
   }

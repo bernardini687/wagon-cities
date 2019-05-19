@@ -7,6 +7,10 @@
   flex: 50% 0 0;
 }
 
+.selected {
+  border: 6px #ff4040 solid;
+}
+
 .card .card-infos {
   align-items: flex-end;
   display: flex;

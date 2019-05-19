@@ -1,4 +1,5 @@
 /* eslint prefer-template: off */
+/* eslint jsx-a11y/click-events-have-key-events: off */
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -12,7 +13,7 @@ class Flat extends React.Component {
   }
 
   render() {
-    const { flat } = this.props;
+    const { flat, selectedFlat, tabIndex } = this.props;
     const style = {
       backgroundImage: `
         linear-gradient(rgba(0, 0, 0, 0.3),
@@ -21,8 +22,11 @@ class Flat extends React.Component {
       `
     };
 
+    let classes = 'card';
+    if (flat === selectedFlat) classes += ' selected';
+
     return (
-      <div className="card" style={style} onClick={this.handleClick}>
+      <div className={classes} style={style} onClick={this.handleClick} role="link" tabIndex={tabIndex + 1}>
         <div className="card-infos">
           <h2>{flat.name}</h2>
         </div>
@@ -34,10 +38,14 @@ class Flat extends React.Component {
       </div>
     );
   }
-
-  function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ selectFlat }, dispatch);
-  }
 }
 
-export default connect(null, mapDispatchToProps)(Flat);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectFlat }, dispatch);
+}
+
+function mapReduxStateToProps(reduxState) {
+  return { flat: reduxState.flat };
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Flat);
