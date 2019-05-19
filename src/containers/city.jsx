@@ -8,10 +8,14 @@ import React from 'react';
 // }
 
 export default class City extends React.Component {
+  handleClick = (e) => {
+    console.log(e.target);
+  }
+
   render() {
     const { city } = this.props;
     return (
-      <div>
+      <div onClick={this.handleClick} role="link">
         {city.name}
       </div>
     );
