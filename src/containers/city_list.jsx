@@ -3,6 +3,10 @@ import React from 'react';
 import City from './city';
 
 export default class CityList extends React.Component {
+  componentWillMount() {
+    this.props.setCities();
+  }
+
   render() {
     const { cities } = this.props;
     return (
