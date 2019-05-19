@@ -15,7 +15,7 @@ class FlatList extends React.Component {
     const { flats } = this.props;
     return (
       <div className="flat-list col-sm-7">
-        {flats.map((flat, index) => <Flat key={flat.name} flat={flat} tabIndex={index} />)}
+        {flats.map(flat => <Flat key={flat.name} flat={flat} />)}
       </div>
     );
   }
@@ -25,8 +25,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setFlats }, dispatch);
 }
 
-function mapReduxStateToProps(reduxState) {
-  return { flats: reduxState.flats };
+function mapStateToProps(state) {
+  return { flats: state.flats };
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(FlatList);
+export default connect(mapStateToProps, mapDispatchToProps)(FlatList);

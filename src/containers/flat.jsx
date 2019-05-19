@@ -1,5 +1,6 @@
 /* eslint prefer-template: off */
 /* eslint jsx-a11y/click-events-have-key-events: off */
+/* eslint jsx-a11y/interactive-supports-focus: off */
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -13,7 +14,7 @@ class Flat extends React.Component {
   }
 
   render() {
-    const { flat, selectedFlat, tabIndex } = this.props;
+    const { flat, selectedFlat } = this.props;
     const style = {
       backgroundImage: `
         linear-gradient(rgba(0, 0, 0, 0.3),
@@ -22,30 +23,33 @@ class Flat extends React.Component {
       `
     };
 
-    let classes = 'card';
-    if (flat === selectedFlat) classes += ' selected';
+    let classes = 'flat card-container';
+    if (flat === selectedFlat) {
+      classes += ' selected';
+    }
 
     return (
-      <div className={classes} style={style} onClick={this.handleClick} role="link" tabIndex={tabIndex + 1}>
-        <div className="card-infos">
-          <h2>{flat.name}</h2>
-        </div>
-        <div className="card-infos">
-          <h4>
-            {flat.price + ' ' + flat.currency}
-          </h4>
+      <div className={classes} onClick={this.handleClick} role="link">
+        <div className="card" style={style}>
+          <div className="card-description">
+            <h2>{flat.name}</h2>
+            <p>
+              {flat.price + ' ' + flat.currency}
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return { selectedFlat: state.selectedFlat };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectFlat }, dispatch);
 }
 
-function mapReduxStateToProps(reduxState) {
-  return { flat: reduxState.flat };
-}
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Flat);
+export default connect(mapStateToProps, mapDispatchToProps)(Flat);
