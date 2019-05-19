@@ -6,8 +6,14 @@ export default class CityList extends React.Component {
   render() {
     const { cities } = this.props;
     return (
-      <div>
-        {cities.map(city => <City key={city.address} city={city} />)}
+      <div className="cities">
+        <ul>
+          {cities.map(city => (
+            <li className="list-group-item" key={city.address}>
+              <City city={city} />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
