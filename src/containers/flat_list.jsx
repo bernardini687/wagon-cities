@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import setFlats from '../actions'; // index.js is implicit
 
-import Flat from '../components/flat';
+import Flat from './flat';
 
 class FlatList extends React.Component {
   componentWillMount() {
