@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import setFlats from '../actions'; // index.js is implicit
+import { setFlats } from '../actions'; // index.js is implicit
 
 import Flat from './flat';
 

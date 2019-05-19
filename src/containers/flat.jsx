@@ -4,7 +4,7 @@ import React from 'react';
 
 class Flat extends React.Component {
   handleClick = () => {
-    //
+    // call selectFlat action
   }
 
   render() {
