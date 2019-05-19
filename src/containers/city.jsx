@@ -1,15 +1,12 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-// function mapStateToProps(state) {
-//   return {
+import { setActiveCity } from '../actions';
 
-//   };
-// }
-
-export default class City extends React.Component {
-  handleClick = (e) => {
-    console.log(e.target);
+class City extends React.Component {
+  handleClick = () => {
+    this.props.setActiveCity(this.props.city);
   }
 
   render() {
@@ -22,7 +19,9 @@ export default class City extends React.Component {
   }
 }
 
-// export default connect(
-//   mapStateToProps,
-// // Implement map dispatch to props
-// )(City)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setActiveCity }, dispatch);
+}
+
+
+export default connect(null, mapDispatchToProps)(City);

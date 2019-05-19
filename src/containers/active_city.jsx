@@ -1,14 +1,20 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
-// function mapStateToProps(state) {
-//   return {
-
-//   };
-// }
-
-export default class ActiveCity extends React.Component {
+class ActiveCity extends React.Component {
   render() {
+    const { city } = this.props
+    if (city) {
+      return (
+        <div className="active-city">
+          <h1>{city.name}</h1>
+          <p>{city.address}</p>
+          <div className="image-container">
+            <img src={`https://kitt.lewagon.com/placeholder/cities/${city.slug}`} alt={city.name} />
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="active-city">
         <h1>city name</h1>
@@ -19,7 +25,8 @@ export default class ActiveCity extends React.Component {
   }
 }
 
-// export default connect(
-//   mapStateToProps,
-// // Implement map dispatch to props
-// )(ActiveCity)
+function mapStateToProps(state) {
+  return { city: state.city };
+}
+
+export default connect(mapStateToProps, null)(ActiveCity);
